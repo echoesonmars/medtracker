@@ -3,15 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Color palette */
+  --color-dark-blue: #0F2854;
+  --color-blue: #4785BF;
+  --color-light-blue: #BDE8F5;
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+  
+  /* Semantic color variables */
+  --background: var(--color-white);
+  --foreground: var(--color-black);
 }
 
 html,
@@ -23,7 +24,7 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -32,6 +33,7 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  letter-spacing: -0.07em;
 }
 
 a {
@@ -39,8 +41,3 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-}
