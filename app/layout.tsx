@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Toaster } from "@/components/ui/toaster";
 
 const geist = localFont({
   src: "../public/fonts/Geist.ttf",
@@ -28,6 +29,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geist.variable} ${sen.variable}`}>
         {children}
+        <Toaster />
       </body>
     </html>
   );
