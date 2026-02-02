@@ -2,7 +2,6 @@
 
 import { BlurFade } from "@/components/ui/blur-fade"
 import { TextAnimate } from "@/components/ui/text-animate"
-import { Highlighter } from "@/components/ui/highlighter"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
 import { X, Check } from "lucide-react"
@@ -72,32 +71,24 @@ export function TheShift() {
                   момент.
                 </TextAnimate>
                 <br />
-                <span>
-                  <TextAnimate
-                    as="span"
-                    animation="blurInUp"
-                    by="word"
-                    delay={0.7}
-                  >
-                    Оно записывает, как пациент умирает.
-                  </TextAnimate>{" "}
-                  <Highlighter
-                    color="#4785BF"
-                    action="highlight"
-                    strokeWidth={2}
-                    padding={3}
-                  >
-                    MedTracker
-                  </Highlighter>{" "}
-                  <TextAnimate
-                    as="span"
-                    animation="blurInUp"
-                    by="word"
-                    delay={0.9}
-                  >
-                    дает шанс его спасти.
-                  </TextAnimate>
-                </span>
+                <TextAnimate
+                  as="span"
+                  animation="blurInUp"
+                  by="word"
+                  delay={0.7}
+                >
+                  Оно записывает, как пациент умирает.
+                </TextAnimate>{" "}
+                <TextAnimate
+                  as="span"
+                  animation="blurInUp"
+                  by="word"
+                  delay={0.9}
+                  className="underline"
+                  style={{ textDecorationColor: "var(--color-blue)" }}
+                >
+                  MedTracker дает шанс его спасти.
+                </TextAnimate>
               </p>
             </div>
           </BlurFade>
@@ -115,10 +106,10 @@ export function TheShift() {
                     >
                       <X
                         className="h-5 w-5"
-                        style={{ color: "var(--color-dark-blue)" }}
+                        style={{ color: "var(--color-black)" }}
                       />
                     </div>
-                    <span style={{ color: "var(--color-dark-blue)" }}>
+                    <span style={{ color: "var(--color-black)" }}>
                       Было (Legacy CCTV)
                     </span>
                   </CardTitle>
@@ -130,21 +121,17 @@ export function TheShift() {
                       delay={0.5 + index * 0.1}
                       direction="up"
                     >
-                      <div
-                        className="p-4 rounded-lg border"
-                        style={{
-                          backgroundColor: "var(--color-light-blue)",
-                          borderColor: "var(--color-blue)",
-                          opacity: 0.3,
-                        }}
-                      >
+                      <div className="p-4 rounded-lg border border-black/10 bg-white">
                         <h4
                           className="font-semibold mb-2"
-                          style={{ color: "var(--color-dark-blue)" }}
+                          style={{ color: "var(--color-black)" }}
                         >
                           {problem.title}
                         </h4>
-                        <p className="text-sm text-black/70">
+                        <p
+                          className="text-sm"
+                          style={{ color: "var(--color-black)", opacity: 0.8 }}
+                        >
                           {problem.description}
                         </p>
                       </div>
@@ -156,19 +143,26 @@ export function TheShift() {
 
             {/* MedTracker AI - Solutions */}
             <BlurFade delay={0.6} direction="right">
-              <Card className="bg-white border-2 border-blue/30 hover:border-blue/50 transition-colors h-full">
+              <Card
+                className={cn(
+                  "border-0 h-full shadow-md",
+                  "transition-all duration-300 ease-out",
+                  "hover:-translate-y-3 hover:shadow-xl"
+                )}
+                style={{ backgroundColor: "var(--color-blue)" }}
+              >
                 <CardHeader>
                   <CardTitle className="flex items-center gap-3 text-xl sm:text-2xl">
                     <div
                       className="p-2 rounded-full"
-                      style={{ backgroundColor: "var(--color-blue)" }}
+                      style={{ backgroundColor: "var(--color-dark-blue)" }}
                     >
                       <Check
                         className="h-5 w-5"
                         style={{ color: "var(--color-white)" }}
                       />
                     </div>
-                    <span style={{ color: "var(--color-dark-blue)" }}>
+                    <span style={{ color: "var(--color-white)" }}>
                       Стало (MedTracker AI)
                     </span>
                   </CardTitle>
@@ -183,18 +177,20 @@ export function TheShift() {
                       <div
                         className="p-4 rounded-lg border"
                         style={{
-                          backgroundColor: "var(--color-light-blue)",
-                          borderColor: "var(--color-blue)",
-                          opacity: 0.5,
+                          backgroundColor: "rgba(15, 40, 84, 0.4)",
+                          borderColor: "var(--color-white)",
                         }}
                       >
                         <h4
                           className="font-semibold mb-2"
-                          style={{ color: "var(--color-dark-blue)" }}
+                          style={{ color: "var(--color-white)" }}
                         >
                           {solution.title}
                         </h4>
-                        <p className="text-sm text-black/70">
+                        <p
+                          className="text-sm"
+                          style={{ color: "var(--color-white)", opacity: 0.95 }}
+                        >
                           {solution.description}
                         </p>
                       </div>
