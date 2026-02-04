@@ -35,7 +35,7 @@ export function Hero() {
                 duration={0.5}
                 className="block"
               >
-                Видеокамеры больше не спасают.
+                Камера — не спасение 
               </TextAnimate>
               <span className="block mt-2">
                 <Highlighter
@@ -65,7 +65,7 @@ export function Hero() {
                   duration={0.5}
                   style={{ color: "var(--color-blue)" }}
                 >
-                  действует.
+                  — решение
                 </TextAnimate>
               </span>
             </h1>

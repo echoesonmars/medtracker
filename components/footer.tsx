@@ -12,8 +12,8 @@ const navigationItems = [
 ]
 
 const contactInfo = {
-  email: "info@medtracker.ru",
-  phone: "+7 (495) 123-45-67",
+  email: "medtrackerm@gmail.com",
+  phone: "+7 705 968 61 12",
 }
 
 export function Footer() {
