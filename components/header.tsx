@@ -24,41 +24,13 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   
-  // #region agent log
-  useEffect(() => {
-    fetch('http://127.0.0.1:7244/ingest/f4743636-4c03-447a-aab4-0a6e91d9cb63',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'header.tsx:24',message:'Header component mounted',data:{timestamp:Date.now()},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'E'})}).catch(()=>{});
-  }, []);
-  // #endregion
-
-  // #region agent log
-  useEffect(() => {
-    const logData = {location:'header.tsx:28',message:'useEffect triggered',data:{mobileMenuOpen,scrolled,reason:'state change'},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'};
-    fetch('http://127.0.0.1:7244/ingest/f4743636-4c03-447a-aab4-0a6e91d9cb63',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(logData)})
-      .then(() => {
-        fetch('http://127.0.0.1:7244/ingest/f4743636-4c03-447a-aab4-0a6e91d9cb63',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'header.tsx:30',message:'Fetch succeeded',data:{mobileMenuOpen,scrolled},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
-      })
-      .catch((err) => {
-        fetch('http://127.0.0.1:7244/ingest/f4743636-4c03-447a-aab4-0a6e91d9cb63',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'header.tsx:32',message:'Fetch failed',data:{error:err?.message||'unknown',errorType:err?.name||'unknown',mobileMenuOpen,scrolled},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
-      });
-  }, [mobileMenuOpen, scrolled]);
-  // #endregion
-
   useEffect(() => {
     const handleScroll = () => {
-      const newScrolled = window.scrollY > 20;
-      // #region agent log
-      fetch('http://127.0.0.1:7244/ingest/f4743636-4c03-447a-aab4-0a6e91d9cb63',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'header.tsx:47',message:'Scroll event',data:{scrollY:window.scrollY,newScrolled},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
-      // #endregion
+      const newScrolled = window.scrollY > 20
       setScrolled(newScrolled)
     }
-    // #region agent log
-    fetch('http://127.0.0.1:7244/ingest/f4743636-4c03-447a-aab4-0a6e91d9cb63',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'header.tsx:54',message:'Scroll listener attached',data:{timestamp:Date.now()},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'D'})}).catch(()=>{});
-    // #endregion
     window.addEventListener("scroll", handleScroll)
     return () => {
-      // #region agent log
-      fetch('http://127.0.0.1:7244/ingest/f4743636-4c03-447a-aab4-0a6e91d9cb63',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'header.tsx:58',message:'Scroll listener removed',data:{timestamp:Date.now()},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'D'})}).catch(()=>{});
-      // #endregion
       window.removeEventListener("scroll", handleScroll)
     }
   }, [])
@@ -108,12 +80,7 @@ export function Header() {
           </div>
 
           {/* Mobile Menu */}
-          <Sheet open={mobileMenuOpen} onOpenChange={(open) => {
-            // #region agent log
-            fetch('http://127.0.0.1:7244/ingest/f4743636-4c03-447a-aab4-0a6e91d9cb63',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'header.tsx:78',message:'Sheet open state changed',data:{open,previousState:mobileMenuOpen},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'C'})}).catch(()=>{});
-            // #endregion
-            setMobileMenuOpen(open)
-          }}>
+          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild className="md:hidden">
               <Button
                 variant="ghost"
@@ -136,12 +103,7 @@ export function Header() {
                 <div className="flex items-center justify-between p-6 border-b border-light-blue/20">
                   <Link
                     href="/"
-                    onClick={() => {
-                      // #region agent log
-                      fetch('http://127.0.0.1:7244/ingest/f4743636-4c03-447a-aab4-0a6e91d9cb63',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'header.tsx:98',message:'Logo clicked, closing menu',data:{mobileMenuOpen},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
-                      // #endregion
-                      setMobileMenuOpen(false)
-                    }}
+                    onClick={() => setMobileMenuOpen(false)}
                     className="flex items-center"
                   >
                     <span
@@ -154,12 +116,7 @@ export function Header() {
                   <Button
                     variant="ghost"
                     size="icon"
-                    onClick={() => {
-                      // #region agent log
-                      fetch('http://127.0.0.1:7244/ingest/f4743636-4c03-447a-aab4-0a6e91d9cb63',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'header.tsx:111',message:'Close button clicked',data:{mobileMenuOpen},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
-                      // #endregion
-                      setMobileMenuOpen(false)
-                    }}
+                    onClick={() => setMobileMenuOpen(false)}
                     className="text-white hover:bg-white/10"
                   >
                     <X className="h-6 w-6" />
